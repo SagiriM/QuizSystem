@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "dkBVWPX7tws=",
+  "success": true,
+  "projectFilePath": "/home/SagiriM/Projects/QuizSystem/QuizSystem.csproj",
+  "expectedPackageFiles": [
+    "/home/SagiriM/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.8/microsoft.aspnetcore.app.ref.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
