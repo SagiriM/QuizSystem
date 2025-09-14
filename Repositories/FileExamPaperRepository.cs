@@ -17,7 +17,7 @@ public class FileExamPaperRepository : IExamPaperRepository
     {
         Directory.CreateDirectory(path);
         {
-            string filePath = Path.Combine(path, $"{paper.StudentId}-{paper.StudentName}.txt");
+            string filePath = Path.Combine(path, $"{paper.Id}.txt");
             using StreamWriter writer = new (filePath);
             string paperString = paper.ToString();
             writer.Write(paperString);

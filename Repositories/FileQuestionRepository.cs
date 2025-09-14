@@ -36,6 +36,7 @@ public class FileQuestionRepository : IQuestionRepository
         else if(questions.Count(q => q.Type == type) < count) return new Question[0];
         else return questions.Where(q => q.Type == type).OrderBy(q => Random.Shared.Next()).Take(count).ToArray();
     }
+    public IEnumerable<Question> GetByType(QuestionType type) => questions.Where(q => q.Type == type);
     public void Save()
     {
         if (!File.Exists(path))
@@ -44,11 +45,12 @@ public class FileQuestionRepository : IQuestionRepository
         StringBuilder content = new();
         foreach(Question q in questions)
         {
-            content.Append(q.Id).Append("---\n");
-            content.Append(q.Number).Append("---\n");
-            content.Append(q.Type).Append("---\n");
-            content.Append(q.Content).Append("---\n");
-            content.Append(q.Answer).Append("---\n");
+            content.Append(q.Id).Append("---\n")
+                .Append(q.Number).Append("---\n")
+                .Append(q.Type).Append("---\n")
+                .Append(q.Content).Append("---\n")
+                .Append(q.Answer).Append("\n")
+                .Append("===\n");
         }
         content.Remove(content.Length - 4, 4);
         writer.Write(content.ToString());
@@ -61,39 +63,10 @@ public class FileQuestionRepository : IQuestionRepository
         List<Question> questions = new();
         string text = File.ReadAllText(path);
         if(string.IsNullOrWhiteSpace(text)) return questions;
-        string[] lines = text.Split("---");
-        for (int i = 0; i < lines.Length; i += 5)
+        string[] qStrings = text.Split("===");
+        foreach (string qString in qStrings)
         {
-            // 检查是否有足够的行数
-            if (i + 4 >= lines.Length)
-                throw new InvalidDataException($"数据不完整");
-
-            // 验证并转换ID
-            if (!Guid.TryParse(lines[i]?.Trim(), out Guid id))
-                throw new FormatException($"ID非法：第{i}行 '{lines[i]}'");
-
-            // 验证并转换题号
-            if (!int.TryParse(lines[i + 1]?.Trim(), out int number))
-                throw new FormatException($"题号非法：第{i + 1}行 '{lines[i + 1]}'");
-
-            // 检查类型是否为空
-            string? typeString = lines[i + 2]?.Trim();
-            if (string.IsNullOrWhiteSpace(typeString))
-                throw new InvalidDataException($"类型不能为空：第{i + 2}行");
-            if (!Enum.TryParse(typeString, true, out QuestionType type))
-                throw new InvalidDataException($"类型非法：第{i + 2}行");
-
-            // 检查内容是否为空
-            string? content = lines[i + 3]?.Trim();
-            if (string.IsNullOrWhiteSpace(content))
-                throw new InvalidDataException($"内容不能为空：第{i + 3}行");
-
-            // 检查答案是否为空
-            string? answer = lines[i + 4]?.Trim();
-            if (string.IsNullOrWhiteSpace(answer))
-                throw new InvalidDataException($"答案不能为空：第{i + 4}行");
-
-            Question q = new(id, number, type, content, answer);
+            Question q = Question.Parse(qString, "---");
             questions.Add(q);
         }
         return questions;

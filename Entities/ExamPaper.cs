@@ -23,28 +23,23 @@ public class ExamPaper
         Date = date;
         Questions = questions;
         Answers = answers;
-
-
     }
-       public ExamPaper(int sId, string sName, DateTime date, IEnumerable<Question> questions, IEnumerable<string> answers) 
-       : this(Guid.NewGuid(), sId, sName, date, questions, answers) {}
+    public ExamPaper(int sId, string sName, DateTime date, IEnumerable<Question> questions, IEnumerable<string> answers) 
+        : this(Guid.NewGuid(), sId, sName, date, questions, answers) {}
     public override string ToString()
     {
         StringBuilder builder = new();
-        builder.Append($"学生姓名：{StudentId}\n")
-            .Append($"学生编号：{StudentName}\n")
-            .Append($"答题时间：{Date}\n")
-            .Append(new string('=', 20));
+        builder.Append($"学号：{StudentId}\n")
+            .Append($"姓名：{StudentName}\n")
+            .Append($"时间：{Date}\n")
+            .Append(new string('=', 20)).Append("\n");
         foreach(var (q, a) in Questions.Zip(Answers))
         {
-            builder.Append($"\n")
-                .Append($"编号：{q.Number}\n")
-                .Append($"类型：{q.Type.GetFriendlyString()}\n")
-                .Append($"题目：{q.Content}\n")
-                .Append($"答案：\n{q.Answer}\n")
-                .Append($"学生答案：\n{a}\n")
-                .Append(new string('-', 20));
+            builder.Append($"{q.ToReportString()}")
+                .Append($"学生答案：{a}\n")
+                .Append(new string('-', 20)).Append("\n");
         }
+        builder.Remove(builder.Length - 21, 21);
         return builder.ToString();
     }
 }
