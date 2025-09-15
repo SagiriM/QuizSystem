@@ -19,7 +19,7 @@ public class FileExamPaperRepository : IExamPaperRepository
         {
             string filePath = Path.Combine(path, $"{paper.Id}.txt");
             using StreamWriter writer = new (filePath);
-            string paperString = paper.ToString();
+            string paperString = paper.ToReportString();
             writer.Write(paperString);
         }
     }

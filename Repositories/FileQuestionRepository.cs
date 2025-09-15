@@ -29,6 +29,7 @@ public class FileQuestionRepository : IQuestionRepository
         question.Answer = q.Answer;
     }
     public IEnumerable<Question> GetAll() => questions;
+    public IEnumerable<Question> GetByContent(string content) => questions.Where(q => q.Content.Contains(content));
     public Question GetById(Guid id) => questions.Single(q => q.Id == id);
     public IEnumerable<Question> GetRandomly(QuestionType type, int count) 
     {

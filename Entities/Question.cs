@@ -23,17 +23,17 @@ public class Question
     public override string ToString()
     {
         StringBuilder builder = new();
-        builder.Append($"{Number}\n")
-            .Append($"{Type.GetFriendlyString()}\n")
-            .Append($"{Content}\n")
-            .Append($"{Answer}\n");
+        builder.Append($"Id: {Id}\n")
+            .Append($"编号：{Number}\n")
+            .Append($"类型：{Type.GetFriendlyString()}\n")
+            .Append($"内容：{Content}\n")
+            .Append($"答案：{Answer}\n");
         return builder.ToString();
     }
     public string ToQuizString()
     {
         StringBuilder builder = new();
-        builder.Append($"题目编号：{Number}\n")
-            .Append($"题目类型：{Type.GetFriendlyString()}\n")
+        builder.Append($"题目类型：{Type.GetFriendlyString()}\n")
             .Append($"题目内容：{Content}\n");
         return builder.ToString();
     }
@@ -44,6 +44,15 @@ public class Question
             .Append($"题目类型：{Type.GetFriendlyString()}\n")
             .Append($"题目内容：{Content}\n")
             .Append($"题目答案：{Answer}\n");
+        return builder.ToString();
+    }
+
+    public string ToSearchString()
+    {
+        StringBuilder builder = new();
+        builder.Append($"ID: {Id}\t")
+            .Append($"编号：{Number.ToString().PadLeft(3,' ')}\t")
+            .Append($"类型：{Type.GetFriendlyString()}\n");
         return builder.ToString();
     }
 
