@@ -1,0 +1,92 @@
+学号：111
+姓名：mohangs
+时间：9/15/2025 3:07:51 PM
+====================
+题目编号：30
+题目类型：单选题
+题目内容：下面是一个递归的排序算法：
+void Sorting(int[] A,int left,int right) {
+    if(right->left>0) {
+        int mid=(right-left+1)/2;
+        Sorting(A,left,mid);
+        Sorting(A,mid+1,right);
+        Merge(A,left,right);
+    }
+}
+其时间复杂度为（）。
+A.O(1) B.O(n) C.O(nlog2 n) D.O(n^3)
+题目答案：C
+学生答案：fffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeff
+--------------------
+题目编号：28
+题目类型：单选题
+题目内容：下列程序段的时间复杂度是（）。
+count=1;
+for(k=1;k<=n;k*=2)
+    for(j=1;j<=n;j++)
+        count++;
+A.O(log2 n) B.O(n) C.O(nlog2 n) D.O(n^2)
+题目答案：C
+学生答案：fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddd
+--------------------
+题目编号：37
+题目类型：单选题
+题目内容：当一个作为实参传递的变量占用的存储空间较大并可能被修改时，最好把对应的形参说明为（），以节省参数值的传输时间和存储参数的空间。
+A.基本类型 B.引用型 C.指针型 D.常值引用型
+题目答案：B
+学生答案：ffffffffffffffff
+--------------------
+题目编号：11
+题目类型：判断题
+题目内容：算法中语句执行的频度就是算法的时间复杂度。
+题目答案：F
+学生答案：ssssssssssssss
+--------------------
+题目编号：12
+题目类型：判断题
+题目内容：一个算法的语句频度之和为1024n+4nlog2 n,则该算法的时间复杂度为O(nlog2 n)。
+题目答案：T
+学生答案：fffffffffff
+--------------------
+题目编号：14
+题目类型：判断题
+题目内容：在很多情况下，数据元素的排列情况不同，算法执行所需时间也不同。
+题目答案：T
+学生答案：ddddddddddddd
+--------------------
+题目编号：1
+题目类型：编程题
+题目内容：题目名称：黑与白
+
+问题描述：有A、B、C、D、E这5个人，每个人额头上都贴了一张黑或白的纸。5人对坐，每个人都可以看到其他人额头上纸的颜色。
+A说：“我看见有3人额头上贴的是白纸，1人额头上贴的是黑纸。”
+B说：“我看见其他4人额头上贴的都是黑纸。”
+C说：“我看见1人额头上贴的是白纸，其他3人额头上贴的是黑纸。”
+D说：“我看见4人额头上贴的都是白纸。”
+E什么也没说。
+现在已知额头上贴黑纸的人说的都是谎话，额头上贴白纸的人说的都是实话。问这5人谁的额头上贴的是白纸，谁的额头上贴的是黑纸？
+题目答案：源程序：
+if __name__=="__main__":
+    #A、B、C、D、E五个人，每个人额头上都帖了一张黑或白的纸
+    #变量a、b、c、d、e分别代表A、B、C、D、E五个人额头上贴纸的颜色，
+    # 当变量的取值为1时表示该人额头上贴纸为白色，当变量取值为0时表示该人额头上贴纸为黑色
+    for a in range(2):  #a,b,c,d,e变量值要么为0，要么为1，0为黑色，1为白色
+        for b in range(2):
+            for c in range(2):
+                for d in range(2):
+                    for e in range(2):
+                        if (a and (b+c+d+e == 3) or ((not a) and (b+c+d+e != 3))):   #A
+                            if(b and (a+c+d+e == 0) or ((not b) and (a+c+d+e != 0))):  #B
+                                if(c and (a+b+d+e == 1) or ((not c) and (a+b+d+e != 1))): #C
+                                    if (d and (a+b+c+e == 4) or ((not d) and (a+b+c+e != 4))): #D
+                                        a1 = "白" if a==1 else "黑"    #三元表达式
+                                        b1 = "白" if b==1 else "黑"
+                                        c1 = "白" if c==1 else "黑"
+                                        d1 = "白" if d==1 else "黑"
+                                        e1 = "白" if e==1 else "黑"
+                                        print("A额头上的贴纸是" + a1 + "色的.")
+                                        print("B额头上的贴纸是" + b1 + "色的.")
+                                        print("C额头上的贴纸是" + c1 + "色的.")
+                                        print("D额头上的贴纸是" + d1 + "色的.")
+                                        print("E额头上的贴纸是" + e1 + "色的.")
+学生答案：ddddddddddd
