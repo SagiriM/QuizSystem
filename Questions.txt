@@ -358,27 +358,3 @@ if __name__ == "__main__":
                     print("张三说的是" + a + "话")
                     print("李四说的是" + b + "话")
                     print("王五说的是" + c + "话")
-===
-30d9f9a2-cf53-4ba0-9e9d-1cdd8422c613---
-1001---
-SingleChoice---
-int mian() {return 0;}---
-完美
-===
-1dd510b7-8903-45d8-8d2d-9ca53aacf6d0---
-0---
-SingleChoice---
----
-
-===
-728eb5a0-ccef-4133-adde-546ac7ecde05---
-0---
-SingleChoice---
----
-
-===
-eaf49caf-e188-4276-a82a-d8752b62cfdc---
-0---
-SingleChoice---
----
-
